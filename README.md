@@ -2,6 +2,15 @@
 
 A cybersecurity and AI governance portfolio project demonstrating black-box AI monitoring, output policy scanning, audit logging, risk scoring, and ISO/IEC 42001-aligned governance concepts.
 
+## Dashboard Preview
+
+### Main Console
+![Rogue AI Monitoring Console](docs/screenshots/dashboard-main.png)
+
+### Governance Scan Results
+![Governance Scan Results](docs/screenshots/dashboard-results.png)
+
+
 ## Project Overview
 
 This lab simulates a monitored AI environment where user prompts are sent to a large language model and the generated output is scanned for governance and security risks.
