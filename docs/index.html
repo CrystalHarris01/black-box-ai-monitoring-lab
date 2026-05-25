@@ -1,3 +1,58 @@
-git add docs/index.html
-git commit -m "Add GitHub Pages landing page"
-git push
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Black Box AI Monitoring Lab</title>
+  <style>
+    body { margin: 0; background: #030506; color: #e5e7eb; font-family: Arial, sans-serif; background-image: linear-gradient(rgba(255,0,0,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,0,0,.035) 1px, transparent 1px); background-size: 28px 28px; }
+    .container { max-width: 1150px; margin: auto; padding: 42px 24px; }
+    .hero { border: 1px solid #7f1d1d; background: #050707; padding: 36px; box-shadow: 0 0 28px rgba(255,0,0,.18); }
+    .label { color: #ff3030; font-family: monospace; font-weight: 900; margin-bottom: 10px; }
+    h1 { font-size: 68px; line-height: .95; margin: 0; letter-spacing: -2px; }
+    h1 span { color: #ff3030; }
+    .subtitle { color: #9ca3af; font-size: 18px; line-height: 1.7; max-width: 880px; margin-top: 18px; }
+    .button { display: inline-block; margin-top: 22px; margin-right: 10px; padding: 12px 18px; border: 1px solid #ff3030; background: #7f1d1d; color: white; text-decoration: none; font-weight: 700; font-family: monospace; }
+    .button.secondary { background: transparent; color: #ff3030; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 24px; }
+    .card { border: 1px solid #374151; background: #070a0b; padding: 22px; box-shadow: 0 12px 30px rgba(0,0,0,.35); }
+    .card h2, .card h3 { color: #ff3030; font-family: monospace; margin-top: 0; }
+    p, li { line-height: 1.7; color: #d1d5db; }
+    img { width: 100%; border: 1px solid #7f1d1d; margin-top: 24px; }
+    .terminal { background: #020303; color: #22c55e; border: 1px solid rgba(34,197,94,.35); padding: 14px; font-family: monospace; overflow-x: auto; }
+    footer { color: #9ca3af; border-top: 1px solid #1f2937; margin-top: 30px; padding-top: 20px; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <div class="label">// BLACK-BOX AI MONITORING LAB</div>
+      <h1>ROGUE <span>AI</span> MONITORING CONSOLE</h1>
+      <p class="subtitle">A cybersecurity and AI governance portfolio project demonstrating black-box AI monitoring, LLM output scanning, audit logging, risk scoring, and ISO/IEC 42001-aligned governance controls.</p>
+      <a class="button" href="blog.html">READ PROJECT BLOG</a>
+      <a class="button secondary" href="https://github.com/CrystalHarris01/black-box-ai-monitoring-lab">VIEW GITHUB REPO</a>
+    </section>
+
+    <img src="screenshots/dashboard-main.png" alt="Rogue AI Monitoring Console dashboard" />
+
+    <section class="grid">
+      <div class="card"><h3>AI Output Monitoring</h3><p>Scans LLM-generated responses for risky output patterns, sensitive data exposure, and policy violations.</p></div>
+      <div class="card"><h3>Risk Scoring</h3><p>Converts monitoring findings into risk levels and severity scores for governance review.</p></div>
+      <div class="card"><h3>Audit Logging</h3><p>Records prompts, responses, timestamps, findings, and monitoring results for traceability.</p></div>
+      <div class="card"><h3>Governance Mapping</h3><p>Connects the lab to ISO/IEC 42001 concepts, ITIL AI governance, ETTC, and lifecycle monitoring.</p></div>
+    </section>
+
+    <section class="card" style="margin-top:24px;">
+      <h2>Control Matrix</h2>
+      <div class="terminal">&gt; ISO_42001_CONTROLS = ACTIVE<br>&gt; POLICY_SCAN = ARMED<br>&gt; RISK_ENGINE = ONLINE<br>&gt; AUDIT_LOGGING = ENABLED<br>&gt; HUMAN_OVERSIGHT_SUPPORT = READY</div>
+    </section>
+
+    <section class="card" style="margin-top:24px;">
+      <h2>Project Summary</h2>
+      <p>This lab simulates how organizations can place a monitoring layer around black-box AI systems. The project sends prompts to an LLM, scans the output, flags policy risks, calculates severity, and creates audit evidence. The visual design uses a rogue AI console aesthetic, but the purpose is defensive AI governance and GRC portfolio demonstration.</p>
+    </section>
+
+    <footer>Built by Crystal Harris · Educational cybersecurity, AI governance, and GRC project.</footer>
+  </div>
+</body>
+</html>
