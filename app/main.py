@@ -33,9 +33,7 @@ st.markdown("""
     max-width: 1500px;
 }
 
-[data-testid="stHeader"] {
-    background: transparent;
-}
+[data-testid="stHeader"] { background: transparent; }
 
 section[data-testid="stSidebar"] {
     background-color: #050707;
@@ -80,17 +78,8 @@ h1, h2, h3, h4 {
     text-shadow: 0 0 16px rgba(255,48,48,.75);
 }
 
-.small-red {
-    color: #ff3030;
-    font-family: monospace;
-    font-weight: 700;
-}
-
-.subline {
-    color: #9ca3af;
-    font-family: monospace;
-    margin-top: -8px;
-}
+.small-red { color: #ff3030; font-family: monospace; font-weight: 700; }
+.subline { color: #9ca3af; font-family: monospace; margin-top: -8px; }
 
 .card {
     border: 1px solid #374151;
@@ -106,6 +95,21 @@ h1, h2, h3, h4 {
     padding: 18px;
     border-radius: 6px;
     box-shadow: inset 0 0 18px rgba(255,0,0,.04), 0 0 20px rgba(255,0,0,.12);
+}
+
+.wireshark-card {
+    border: 1px solid #7f1d1d;
+    background: #050707;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: inset 0 0 18px rgba(255,0,0,.04), 0 0 22px rgba(255,0,0,.12);
+    min-height: 100%;
+}
+
+.wireshark-card img {
+    border: 1px solid #7f1d1d;
+    border-radius: 5px;
+    box-shadow: 0 0 18px rgba(255,48,48,.18);
 }
 
 .status-row {
@@ -133,39 +137,11 @@ h1, h2, h3, h4 {
     min-height: 120px;
 }
 
-.metric-label {
-    color: #cbd5e1;
-    font-family: monospace;
-    font-size: 13px;
-}
-
-.metric-value-green {
-    color: #22c55e;
-    font-family: monospace;
-    font-size: 30px;
-    font-weight: 900;
-}
-
-.metric-value-red {
-    color: #ff3030;
-    font-family: monospace;
-    font-size: 28px;
-    font-weight: 900;
-}
-
-.metric-value-blue {
-    color: #38bdf8;
-    font-family: monospace;
-    font-size: 28px;
-    font-weight: 900;
-}
-
-.metric-value-purple {
-    color: #a78bfa;
-    font-family: monospace;
-    font-size: 28px;
-    font-weight: 900;
-}
+.metric-label { color: #cbd5e1; font-family: monospace; font-size: 13px; }
+.metric-value-green { color: #22c55e; font-family: monospace; font-size: 30px; font-weight: 900; }
+.metric-value-red { color: #ff3030; font-family: monospace; font-size: 28px; font-weight: 900; }
+.metric-value-blue { color: #38bdf8; font-family: monospace; font-size: 28px; font-weight: 900; }
+.metric-value-purple { color: #a78bfa; font-family: monospace; font-size: 28px; font-weight: 900; }
 
 .terminal {
     font-family: monospace;
@@ -211,9 +187,7 @@ textarea, input, select {
     border-radius: 4px !important;
 }
 
-hr {
-    border-color: #1f2937;
-}
+hr { border-color: #1f2937; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -227,6 +201,7 @@ with st.sidebar:
     st.markdown("▸ Audit Logs")
     st.markdown("▸ Policy Rules")
     st.markdown("▸ Control Matrix")
+    st.markdown("▸ Packet Evidence")
     st.divider()
 
     now = datetime.now().strftime("%H:%M:%S")
@@ -239,6 +214,8 @@ with st.sidebar:
 &gt; Policy rules loaded<br>
 <span style="color:#22c55e">[OK]</span><br><br>
 &gt; Risk scoring model online<br>
+<span style="color:#22c55e">[OK]</span><br><br>
+&gt; Packet evidence linked<br>
 <span style="color:#22c55e">[OK]</span><br><br>
 &gt; Awaiting prompt<br>
 <span style="color:#ff3030">[STANDBY]</span>
@@ -325,7 +302,6 @@ if run_button:
                 )
 
                 ai_response = completion.choices[0].message.content
-
                 results = run_policy_checks(ai_response)
                 risk = calculate_risk_score(results["findings"])
                 write_log(user_prompt, ai_response, results)
@@ -445,6 +421,56 @@ else:
 <hr>
 <h3>RISK SCORE</h3>
 <p style="font-size:32px;font-family:monospace;">0 / 100</p>
+</div>
+""", unsafe_allow_html=True)
+
+st.markdown("<br>", unsafe_allow_html=True)
+st.markdown("""
+<div class="console-shell">
+<div class="small-red">// PACKET EVIDENCE :: WIRESHARK TRAFFIC ANALYSIS</div>
+<div class="main-title">NETWORK <span>CAPTURE</span> EXTENSION</div>
+<div class="subline">LOCALHOST HTTP TRAFFIC :: PROMPT VISIBILITY :: POLICY ENFORCEMENT VALIDATION</div>
+</div>
+""", unsafe_allow_html=True)
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+wire_left, wire_right = st.columns(2)
+
+with wire_left:
+    st.markdown('<div class="wireshark-card">', unsafe_allow_html=True)
+    st.markdown("### 🟢 ALLOWED PROMPT CAPTURE")
+    st.image("screenshots/wireshark-lab/allowed-prompt-capture.png", use_container_width=True)
+    st.markdown("""
+<div class="terminal">
+&gt; traffic_source: 127.0.0.1<br>
+&gt; traffic_destination: 127.0.0.1<br>
+&gt; display_filter: tcp.port == 5000<br>
+&gt; result: status=allowed
+</div>
+""", unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+with wire_right:
+    st.markdown('<div class="wireshark-card">', unsafe_allow_html=True)
+    st.markdown("### 🔴 BLOCKED PROMPT CAPTURE")
+    st.image("screenshots/wireshark-lab/blocked-prompt-capture.png", use_container_width=True)
+    st.markdown("""
+<div class="terminal">
+&gt; response_code: HTTP/1.1 403 FORBIDDEN<br>
+&gt; trigger: sensitive data prompt<br>
+&gt; boundary_result: blocked<br>
+&gt; evidence: prompt visible in plaintext HTTP
+</div>
+""", unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+st.markdown("""
+<div class="notice">
+<strong>WIRESHARK EXTENSION SUMMARY:</strong><br>
+This section extends the Rogue AI Monitoring Console with packet-level validation. Wireshark captured allowed and blocked prompt traffic over localhost HTTP on TCP port 5000. The blocked capture shows that the sensitive-data prompt triggered the monitoring boundary and returned a 403 response.
+<br><br>
+<a href="https://github.com/CrystalHarris01/black-box-ai-monitoring-lab/blob/main/wireshark-ai-traffic-analysis.md" target="_blank" style="color:#ff3030;font-weight:900;">VIEW FULL WIRESHARK TRAFFIC ANALYSIS REPORT</a>
 </div>
 """, unsafe_allow_html=True)
 
