@@ -5,86 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Black Box AI Monitoring Lab</title>
   <style>
-    :root {
-      --bg: #020617;
-      --panel: rgba(15, 23, 42, 0.86);
-      --blue: #38bdf8;
-      --green: #22c55e;
-      --orange: #f97316;
-      --text: #e5f3ff;
-      --muted: #94a3b8;
-      --border: rgba(56, 189, 248, 0.28);
-    }
-    * { box-sizing: border-box; scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.22), transparent 35%), radial-gradient(circle at top right, rgba(249, 115, 22, 0.16), transparent 30%), radial-gradient(circle at bottom, rgba(34, 197, 94, 0.16), transparent 35%), var(--bg);
-      color: var(--text);
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image: linear-gradient(rgba(56, 189, 248, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 189, 248, 0.06) 1px, transparent 1px);
-      background-size: 42px 42px;
-      pointer-events: none;
-      z-index: -1;
-    }
-    header { min-height: 92vh; padding: 28px; }
-    nav {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 18px 22px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      background: rgba(2, 6, 23, 0.72);
-      box-shadow: 0 0 30px rgba(56, 189, 248, 0.12);
-    }
-    .logo { font-weight: 900; letter-spacing: 2px; }
-    .logo span { color: var(--green); }
-    .links { display: flex; gap: 16px; flex-wrap: wrap; }
-    .links a { color: var(--muted); text-decoration: none; font-size: 0.95rem; }
-    .links a:hover { color: var(--orange); }
-    .hero { max-width: 1020px; margin: 125px auto 40px; text-align: center; }
-    .eyebrow { color: var(--green); text-transform: uppercase; letter-spacing: 3px; font-weight: 800; font-size: 0.85rem; }
-    h1 { font-size: clamp(2.7rem, 8vw, 6.5rem); line-height: 0.95; margin: 14px 0; text-shadow: 0 0 26px rgba(56, 189, 248, 0.35); }
-    .subtitle { max-width: 760px; margin: 22px auto; color: var(--muted); line-height: 1.7; font-size: 1.18rem; }
-    .buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
-    .btn { padding: 14px 22px; border-radius: 999px; text-decoration: none; font-weight: 900; transition: transform 0.2s ease, box-shadow 0.2s ease; }
-    .btn:hover { transform: translateY(-3px); }
-    .primary { color: #021018; background: linear-gradient(135deg, var(--blue), var(--green)); }
-    .secondary { color: var(--text); border: 1px solid var(--orange); background: rgba(15,23,42,0.75); }
-    main { max-width: 1120px; margin: 0 auto; padding: 20px 24px 80px; }
-    section { padding: 70px 0; }
-    .section-title p { color: var(--orange); text-transform: uppercase; letter-spacing: 3px; font-weight: 900; }
-    .section-title h2 { font-size: clamp(2rem, 5vw, 4rem); margin: 0 0 24px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
-    .card { padding: 26px; border: 1px solid var(--border); border-radius: 24px; background: var(--panel); box-shadow: 0 0 30px rgba(2, 6, 23, 0.5); }
-    .card h3 { color: var(--blue); margin-top: 0; }
-    .card p, li { color: var(--muted); line-height: 1.65; }
-    .evidence { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
-    .evidence img { width: 100%; border-radius: 18px; border: 1px solid rgba(56,189,248,0.25); box-shadow: 0 0 30px rgba(0,0,0,0.35); }
-    .terminal { background: #010409; border: 1px solid rgba(34,197,94,0.35); border-radius: 22px; padding: 24px; font-family: Consolas, monospace; color: #d1fae5; overflow-x: auto; }
-    .prompt { color: var(--green); font-weight: 900; }
-    footer { text-align: center; color: var(--muted); padding: 35px 20px; border-top: 1px solid rgba(148, 163, 184, 0.18); }
+    :root { --bg:#020617; --panel:rgba(15,23,42,.86); --blue:#38bdf8; --green:#22c55e; --orange:#f97316; --text:#e5f3ff; --muted:#94a3b8; --border:rgba(56,189,248,.28); }
+    *{box-sizing:border-box;scroll-behavior:smooth} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at top left,rgba(56,189,248,.22),transparent 35%),radial-gradient(circle at top right,rgba(249,115,22,.16),transparent 30%),radial-gradient(circle at bottom,rgba(34,197,94,.16),transparent 35%),var(--bg);color:var(--text)}
+    body:before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(56,189,248,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.06) 1px,transparent 1px);background-size:42px 42px;pointer-events:none;z-index:-1}
+    header{min-height:92vh;padding:28px} nav{max-width:1120px;margin:0 auto;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;border:1px solid var(--border);border-radius:22px;background:rgba(2,6,23,.72);box-shadow:0 0 30px rgba(56,189,248,.12)}
+    .logo{font-weight:900;letter-spacing:2px}.logo span{color:var(--green)}.links{display:flex;gap:16px;flex-wrap:wrap}.links a{color:var(--muted);text-decoration:none;font-size:.95rem}.links a:hover{color:var(--orange)}
+    .hero{max-width:1020px;margin:125px auto 40px;text-align:center}.eyebrow{color:var(--green);text-transform:uppercase;letter-spacing:3px;font-weight:800;font-size:.85rem}h1{font-size:clamp(2.7rem,8vw,6.5rem);line-height:.95;margin:14px 0;text-shadow:0 0 26px rgba(56,189,248,.35)}.subtitle{max-width:760px;margin:22px auto;color:var(--muted);line-height:1.7;font-size:1.18rem}
+    .buttons{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:32px}.btn{padding:14px 22px;border-radius:999px;text-decoration:none;font-weight:900;transition:.2s}.btn:hover{transform:translateY(-3px)}.primary{color:#021018;background:linear-gradient(135deg,var(--blue),var(--green))}.secondary{color:var(--text);border:1px solid var(--orange);background:rgba(15,23,42,.75)}
+    main{max-width:1120px;margin:0 auto;padding:20px 24px 80px}section{padding:70px 0}.section-title p{color:var(--orange);text-transform:uppercase;letter-spacing:3px;font-weight:900}.section-title h2{font-size:clamp(2rem,5vw,4rem);margin:0 0 24px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}.card{padding:26px;border:1px solid var(--border);border-radius:24px;background:var(--panel);box-shadow:0 0 30px rgba(2,6,23,.5)}.card h3{color:var(--blue);margin-top:0}.card p,.card li{color:var(--muted);line-height:1.65}.evidence{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}.evidence img{width:100%;border-radius:18px;border:1px solid rgba(56,189,248,.25);box-shadow:0 0 30px rgba(0,0,0,.35);cursor:zoom-in;transition:transform .2s ease, box-shadow .2s ease}.evidence img:hover{transform:scale(1.02);box-shadow:0 0 38px rgba(56,189,248,.3)}.terminal{background:#010409;border:1px solid rgba(34,197,94,.35);border-radius:22px;padding:24px;font-family:Consolas,monospace;color:#d1fae5;overflow-x:auto}.prompt{color:var(--green);font-weight:900}footer{text-align:center;color:var(--muted);padding:35px 20px;border-top:1px solid rgba(148,163,184,.18)}
+    .modal{display:none;position:fixed;z-index:9999;inset:0;background:rgba(0,0,0,.92);padding:30px}.modal.open{display:flex;align-items:center;justify-content:center;flex-direction:column}.modal img{max-width:96vw;max-height:86vh;border:1px solid var(--border);box-shadow:0 0 40px rgba(56,189,248,.25)}.modal-caption{color:var(--muted);margin-top:12px}.close{position:absolute;top:18px;right:24px;color:var(--text);font-size:42px;cursor:pointer;background:none;border:0}.close:hover{color:var(--orange)}
   </style>
 </head>
 <body>
-<header>
-<nav>
-<div class="logo">AI<span>MONITOR</span></div>
-<div class="links"><a href="#overview">Overview</a><a href="#wireshark">Wireshark Lab</a><a href="#evidence">Evidence</a><a href="wireshark-ai-traffic-analysis.md">Full Report</a></div>
-</nav>
-<div class="hero">
-<p class="eyebrow">Cybersecurity • AI Governance • Network Analysis</p>
-<h1>Black Box AI Monitoring Lab</h1>
-<p class="subtitle">A portfolio project demonstrating AI prompt monitoring, policy enforcement, Wireshark packet analysis, and governance-focused security documentation.</p>
-<div class="buttons"><a class="btn primary" href="#wireshark">View Wireshark Lab</a><a class="btn secondary" href="wireshark-ai-traffic-analysis.md">Read Full Report</a><a class="btn secondary" href="https://github.com/CrystalHarris01/black-box-ai-monitoring-lab">View GitHub Repo</a></div>
-</div>
-</header>
+<header><nav><div class="logo">AI<span>MONITOR</span></div><div class="links"><a href="#overview">Overview</a><a href="#wireshark">Wireshark Lab</a><a href="#evidence">Evidence</a><a href="wireshark-ai-traffic-analysis.md">Full Report</a></div></nav><div class="hero"><p class="eyebrow">Cybersecurity • AI Governance • Network Analysis</p><h1>Black Box AI Monitoring Lab</h1><p class="subtitle">A portfolio project demonstrating AI prompt monitoring, policy enforcement, Wireshark packet analysis, and governance-focused security documentation.</p><div class="buttons"><a class="btn primary" href="#wireshark">View Wireshark Lab</a><a class="btn secondary" href="wireshark-ai-traffic-analysis.md">Read Full Report</a><a class="btn secondary" href="https://github.com/CrystalHarris01/black-box-ai-monitoring-lab">View GitHub Repo</a></div></div></header>
+<main><section id="overview"><div class="section-title"><p>Project Overview</p><h2>AI Monitoring + Traffic Analysis</h2></div><div class="grid"><div class="card"><h3>AI Boundary Testing</h3><p>The lab simulates an AI monitoring endpoint that allows normal prompts and blocks prompts containing sensitive or unauthorized content.</p></div><div class="card"><h3>Packet-Level Evidence</h3><p>Wireshark is used to inspect localhost HTTP traffic and verify request/response behavior over TCP port 5000.</p></div><div class="card"><h3>Governance Framing</h3><p>The report connects technical evidence to AI assurance, privacy, monitoring, and control validation.</p></div></div></section><section id="wireshark"><div class="section-title"><p>Wireshark Lab</p><h2>Allowed vs Blocked Prompt Traffic</h2></div><div class="card"><p>The Flask test endpoint runs locally at:</p><div class="terminal"><span class="prompt">$</span> http://127.0.0.1:5000/analyze</div><p>Wireshark captures the traffic on the loopback interface using this display filter:</p><div class="terminal"><span class="prompt">filter:</span> tcp.port == 5000</div></div></section><section id="evidence"><div class="section-title"><p>Evidence</p><h2>Captured Wireshark Screenshots</h2></div><div class="evidence"><div class="card"><h3>Allowed Prompt Capture</h3><img class="zoomable" src="screenshots/wireshark-lab/allowed-prompt-capture.png" alt="Allowed prompt Wireshark capture"><p>Click the image to enlarge. Normal prompt traffic was accepted and returned an allowed JSON response.</p></div><div class="card"><h3>Blocked Prompt Capture</h3><img class="zoomable" src="screenshots/wireshark-lab/blocked-prompt-capture.png" alt="Blocked prompt Wireshark capture"><p>Click the image to enlarge. The sensitive-data prompt triggered a boundary response and returned HTTP 403 Forbidden.</p></div></div></section><section><div class="section-title"><p>Security Findings</p><h2>What This Lab Shows</h2></div><div class="grid"><div class="card"><h3>Plaintext Prompt Visibility</h3><p>Because the local test uses plaintext HTTP, prompt and response data can be visible during packet inspection.</p></div><div class="card"><h3>Policy Enforcement</h3><p>The monitoring endpoint blocks sensitive prompt content and returns a 403 response.</p></div><div class="card"><h3>Recommended Controls</h3><p>Use TLS, reduce sensitive logging, restrict packet captures, and monitor repeated blocked prompt attempts.</p></div></div></section></main><footer><p>Built by Crystal Harris • Black Box AI Monitoring Lab</p></footer>
+<div id="imageModal" class="modal"><button class="close" id="closeModal">&times;</button><img id="modalImage" src="" alt="Expanded Wireshark screenshot"><div id="modalCaption" class="modal-caption"></div></div>
+<script>const modal=document.getElementById('imageModal');const modalImage=document.getElementById('modalImage');const modalCaption=document.getElementById('modalCaption');document.querySelectorAll('.zoomable').forEach(img=>{img.addEventListener('click',()=>{modal.classList.add('open');modalImage.src=img.src;modalCaption.textContent=img.alt;});});document.getElementById('closeModal').addEventListener('click',()=>modal.classList.remove('open'));modal.addEventListener('click',e=>{if(e.target===modal){modal.classList.remove('open');}});document.addEventListener('keydown',e=>{if(e.key==='Escape'){modal.classList.remove('open');}});</script>
 </body>
 </html>
