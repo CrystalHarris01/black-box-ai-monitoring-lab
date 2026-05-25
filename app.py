@@ -15,8 +15,7 @@ blocked_terms = [
 def home():
     return """
     <h1>Black-Box AI Monitoring Lab</h1>
-    <p>Send a POST request to /analyze with a JSON prompt.</p>
-    <p>Example endpoint: /analyze</p>
+    <p>Send a POST request to /analyze with a prompt.</p>
     """
 
 @app.route("/analyze", methods=["POST"])
