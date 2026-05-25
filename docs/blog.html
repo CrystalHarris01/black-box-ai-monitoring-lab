@@ -1,3 +1,74 @@
-git add docs/blog.html
-git commit -m "Add GitHub Pages blog page"
-git push
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Black Box AI Monitoring Lab | Project Blog</title>
+  <style>
+    body { margin: 0; background: #030506; color: #e5e7eb; font-family: Arial, sans-serif; background-image: linear-gradient(rgba(255,0,0,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,0,0,.035) 1px, transparent 1px); background-size: 28px 28px; }
+    .container { max-width: 1100px; margin: auto; padding: 40px 24px; }
+    .hero { border: 1px solid #7f1d1d; background: #050707; padding: 34px; box-shadow: 0 0 28px rgba(255,0,0,.18); }
+    .label { color: #ff3030; font-family: monospace; font-weight: 900; margin-bottom: 10px; }
+    h1 { font-size: 64px; line-height: .95; margin: 0; letter-spacing: -2px; }
+    h1 span { color: #ff3030; }
+    .subtitle { color: #9ca3af; font-size: 18px; line-height: 1.7; max-width: 850px; margin-top: 18px; }
+    .card { border: 1px solid #374151; background: #070a0b; padding: 24px; margin-top: 24px; box-shadow: 0 12px 30px rgba(0,0,0,.35); }
+    .card h2 { color: #ff3030; font-family: monospace; }
+    p, li { line-height: 1.7; color: #d1d5db; }
+    .terminal { background: #020303; color: #22c55e; border: 1px solid rgba(34,197,94,.35); padding: 14px; font-family: monospace; overflow-x: auto; }
+    img { width: 100%; border: 1px solid #7f1d1d; margin-top: 20px; }
+    .button { display: inline-block; margin-top: 22px; padding: 12px 18px; border: 1px solid #ff3030; background: #7f1d1d; color: white; text-decoration: none; font-weight: 700; font-family: monospace; }
+    .button.secondary { background: transparent; color: #ff3030; margin-left: 10px; }
+    footer { color: #9ca3af; border-top: 1px solid #1f2937; margin-top: 30px; padding-top: 20px; font-size: 14px; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <div class="label">// BLACK-BOX AI MONITORING LAB</div>
+    <h1>Monitoring <span>Black-Box AI</span> for Governance Risk</h1>
+    <p class="subtitle">A cybersecurity and GRC portfolio project exploring AI governance, LLM output monitoring, audit logging, risk scoring, ISO/IEC 42001 alignment, and ITIL AI governance concepts.</p>
+    <a class="button" href="https://github.com/CrystalHarris01/black-box-ai-monitoring-lab">VIEW GITHUB REPOSITORY</a>
+    <a class="button secondary" href="./">BACK TO PROJECT PAGE</a>
+  </div>
+  <div class="card">
+    <h2>Building the Project</h2>
+    <p>This project began with a practical governance question: how can organizations monitor AI systems they cannot fully inspect internally? That is the purpose of black-box AI monitoring.</p>
+    <p>Instead of trusting AI outputs automatically, this lab treats the model as a monitored system that must be scanned, logged, scored, and governed continuously.</p>
+    <p>The platform sends prompts to a large language model, analyzes the generated output, checks for policy violations, assigns a risk score, and records audit evidence.</p>
+    <img src="screenshots/dashboard-main.png" alt="Rogue AI Console">
+  </div>
+  <div class="card">
+    <h2>Governance Concepts Demonstrated</h2>
+    <ul>
+      <li><strong>AI risk management:</strong> converting findings into risk levels and scores.</li>
+      <li><strong>Continuous monitoring:</strong> scanning each AI interaction for policy violations.</li>
+      <li><strong>Accountability and traceability:</strong> logging prompts, outputs, timestamps, and findings.</li>
+      <li><strong>Information security and privacy:</strong> detecting sensitive data patterns.</li>
+      <li><strong>Incident detection:</strong> flagging outputs that may require review or escalation.</li>
+      <li><strong>Human oversight support:</strong> giving reviewers evidence for governance decisions.</li>
+      <li><strong>Continual improvement:</strong> refining policy rules and scoring logic over time.</li>
+    </ul>
+    <div class="terminal">&gt; ISO_42001_CONTROLS = ACTIVE<br>&gt; POLICY_SCAN = ARMED<br>&gt; RISK_ENGINE = ONLINE<br>&gt; AUDIT_LOGGING = ENABLED<br>&gt; HUMAN_OVERSIGHT_SUPPORT = READY</div>
+  </div>
+  <div class="card">
+    <h2>Why This Matters</h2>
+    <p>AI governance is becoming operational, not theoretical. Organizations increasingly need monitoring layers around AI systems to detect unsafe outputs, sensitive data exposure, hallucination risk, policy violations, and governance gaps.</p>
+    <p>This project demonstrates how cybersecurity, GRC, monitoring, and AI governance concepts can work together in a practical implementation.</p>
+    <img src="screenshots/dashboard-results.png" alt="Governance Scan Results">
+  </div>
+  <div class="card">
+    <h2>Next Improvements</h2>
+    <ul>
+      <li>Prompt injection detection</li>
+      <li>Hallucination-risk checks</li>
+      <li>CSV/PDF governance reports</li>
+      <li>Formal AI incident register</li>
+      <li>Dashboard analytics for flagged-output trends</li>
+      <li>Multi-model comparison</li>
+    </ul>
+  </div>
+  <footer>Built by Crystal Harris · Black-Box AI Monitoring Lab · Educational cybersecurity and AI governance project.</footer>
+</div>
+</body>
+</html>
